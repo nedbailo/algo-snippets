@@ -8,13 +8,17 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-        int[] input = {6, 4, 2, 1, 3, 5, 7, 9, 1, 1, 8};
+        //int[] input = {6, 4, 2, 1, 3, 5, 7, 9, 1, 1, 8};
+        int[] input = {1, 2, 3, 4, 5, 6, 7};
         System.out.println("input : " + Arrays.toString(input));
 
-        //new SelectionSort().doSelectionSort(input);
-        new MergeSort().doMergeSort(input);
+        new SelectionSort().doSelectionSort(input);
+        int res = new BinarySearch().rank(99, input);
+        System.out.println("rank is " + res);
 
-        System.out.println("sorted: " + Arrays.toString(input));
+        //new SelectionSort().doSelectionSort(input);
+//        new MergeSort().doMergeSort(input);
+//        System.out.println("sorted: " + Arrays.toString(input));
     }
 
 }
