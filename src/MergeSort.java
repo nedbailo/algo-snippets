@@ -4,18 +4,9 @@ import java.util.Arrays;
  * Created by ilya on 28-Feb-17.
  */
 public class MergeSort {
-    public static void main(String[] args) {
 
-        int[] input = {6, 4, 2, 1, 3, 5, 7, 9, 1, 1, 8};
-
-        System.out.println(Arrays.toString(input));
-        new MergeSort().doMergeSort(input);
-        System.out.println(Arrays.toString(input));
-    }
-
-    private int[] doMergeSort(int[] input) {
+    public void doMergeSort(int[] input) {
         recursiveMergeSort(input, 0, input.length - 1);
-        return input;
     }
 
     private void recursiveMergeSort(int[] input, int start, int end) {
@@ -28,13 +19,6 @@ public class MergeSort {
             return;
         }
 
-        // if 2 elements, just need to merge
-//        if ((end - start) == 1){
-//            merge(input, start, start, end);
-//            System.out.println(" -- merged : " + Arrays.toString(input) + " start = " + start + " end = " + end);
-//            return;
-//        }
-
         if (start < end){
             int mid = (start + end) / 2;
             recursiveMergeSort(input, start, mid);
@@ -42,7 +26,6 @@ public class MergeSort {
             merge(input, start, mid, end);
             System.out.println(" -- sorted : " + Arrays.toString(input) + " start = " + start + " end = " + end);
         }
-
     }
 
     //TODO: try first merge into aux array and then copy back, maybe the code will be easier
