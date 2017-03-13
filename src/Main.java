@@ -1,8 +1,4 @@
-import com.sun.scenario.effect.Merge;
-import problems.MedianOfThree;
-import sort.MergeSort;
-
-import java.util.Arrays;
+import problems.AllUniqueChars;
 
 /**
  * Created by ilya on 01-Mar-17.
@@ -22,9 +18,12 @@ public class Main {
 //        new MergeSort().doMergeSort(input);
 //        System.out.println("sorted: " + Arrays.toString(input));
 
-        int[] three = {3, 1, 6};
-        int res = new MedianOfThree().getMedianUsingSort(three[0], three[1], three[2]);
-        System.out.println(Arrays.toString(three) + " median " + res);
+//        int[] three = {5, 4, 4};
+//        int res = new MedianOfThree().getMedianUsingSort(three[0], three[1], three[2]);
+//        System.out.println(Arrays.toString(three) + " median " + res);
+
+        boolean unique = new AllUniqueChars().checkIfAllUniqueUsingSetWithoutAdditionalDataStructures("ab  cc");
+        System.out.println("unique " + unique);
     }
 
 }

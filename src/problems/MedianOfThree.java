@@ -30,6 +30,4 @@ public class MedianOfThree {
         Arrays.sort(array);
         return array[1];
     }
-
-
 }
