@@ -6,50 +6,65 @@ import java.util.Arrays;
  * Created by ilya on 28-Feb-17.
  */
 public class MergeSort {
-
+    /**
+     * This method sorts input array in-place using merge sort algorithm
+     * @param input array to sort
+     */
     public void doMergeSort(int[] input) {
-        recursiveMergeSort(input, 0, input.length - 1);
+        doRecursiveMergeSort(input, 0, input.length - 1);
     }
 
-    private void recursiveMergeSort(int[] input, int start, int end) {
-        System.out.println("sorting: " + Arrays.toString(input) + " start = " + start + " end = " + end);
+    private void doRecursiveMergeSort(int[] input, int left, int right) {
+        System.out.println("starting to sort " + Arrays.toString(input) + "(" + left + ", " + right + ")");
 
-
-        //if array of 1 element then it is already sorted
-        if (start == end){
-            System.out.println(" -- range already sorted");
+        if (left == right){
+            System.out.println("array is already sorted, returning");
             return;
         }
 
-        if (start < end){
-            int mid = (start + end) / 2;
-            recursiveMergeSort(input, start, mid);
-            recursiveMergeSort(input, mid + 1, end);
-            merge(input, start, mid, end);
-            System.out.println(" -- sorted : " + Arrays.toString(input) + " start = " + start + " end = " + end);
-        }
+        int middle = (left + right) / 2;
+
+        doRecursiveMergeSort(input, left, middle);
+        doRecursiveMergeSort(input, middle + 1, right);
+        merge(input, left, middle, right);
+        System.out.println("finished sorting " + Arrays.toString(input));
+
     }
 
-    //TODO: try first merge into aux array and then copy back, maybe the code will be easier
-    private void merge(int[] input, int start, int mid, int end) {
-        int[] tmp = Arrays.copyOfRange(input, start, end + 1);
-        System.out.println(" -- created aux array n = " + tmp.length);
+    private void merge(int[] input, int left, int middle, int right) {
+        System.out.println("merge (" + left + ", " + middle + ", " + right + ")");
 
-        //indexes in tmp array
-        int tmpLeft = 0;
-        int tmpMid = mid - start;
-        int tmpRight = tmpMid + 1;
-        int tmpEnd = end - start;
+        int[] res = new int[right - left + 1];
+        int current_res_idx = 0;
 
-        //merging into [start..end] part of the original array
-        for (int i = start; i <= end; i++){
-            if ((tmpRight > tmpEnd) || (tmpLeft <= tmpMid && (tmp[tmpLeft] <= tmp[tmpRight]))){
-                input[i]= tmp[tmpLeft];
-                tmpLeft++;
-            } else if ((tmpLeft > tmpMid) || (tmpRight <= tmpEnd && (tmp[tmpLeft] > tmp[tmpRight]))){
-                input[i]= tmp[tmpRight];
-                tmpRight++;
+        if (onlyTwoElementsToMerge(left, right)){
+            if (input[right] < input[left]){
+                int tmp = input[left];
+                input[left] = input[right];
+                input[right] = tmp;
             }
+            return;
         }
+
+        int current_left_idx = left;
+        int current_right_idx = middle + 1;
+
+        while (current_left_idx <= middle || current_right_idx <= right){
+            int currentLeftValue = (current_left_idx <= middle) ? input[current_left_idx] : Integer.MAX_VALUE;
+            int currentRightValue = (current_right_idx <= right) ? input[current_right_idx] : Integer.MAX_VALUE;
+            if (current_right_idx > right || (currentLeftValue <= currentRightValue)){
+                res[current_res_idx] = currentLeftValue;
+                current_left_idx++;
+            } else if ( current_left_idx > middle || (currentLeftValue > currentRightValue)){
+                res[current_res_idx] = currentRightValue;
+                current_right_idx++;
+            }
+            current_res_idx++;
+        }
+        System.arraycopy(res, 0, input, left, res.length);
+    }
+
+    private boolean onlyTwoElementsToMerge(int left, int right) {
+        return right - left == 1;
     }
 }
