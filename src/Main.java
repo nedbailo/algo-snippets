@@ -5,7 +5,7 @@ import sort.MergeSort;
  */
 public class Main {
     public static void main(String[] args) {
-        int[] input = {6, 5, 1, 1, 7};
+        int[] input = {6, 5, 1, 7, 1};
 
         new MergeSort().doMergeSort(input);
 //        System.out.println("sorted: " + Arrays.toString(input));
