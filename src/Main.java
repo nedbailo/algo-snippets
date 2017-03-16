@@ -1,13 +1,21 @@
 import sort.MergeSort;
+import sort.TwoEndSort;
+
+import java.util.Arrays;
 
 /**
  * Created by ilya on 01-Mar-17.
  */
 public class Main {
     public static void main(String[] args) {
-        int[] input = {6, 5, 1, 7, 1};
+        int[] input = {9, 8, 7, 6, 5, 4, 3, 1, 2, 9};
 
-        new MergeSort().doMergeSort(input);
+        System.out.println("sorting: " + Arrays.toString(input));
+        new TwoEndSort().doSort(input);
+        System.out.println("sorted: " + Arrays.toString(input));
+
+
+//        new MergeSort().doMergeSort(input);
 //        System.out.println("sorted: " + Arrays.toString(input));
 //        int[] input = {1, 2, 3, 4, 5, 6, 7};
 //        System.out.println("input : " + Arrays.toString(input));
