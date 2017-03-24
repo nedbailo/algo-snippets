@@ -1,4 +1,5 @@
 import sort.BubbleSort;
+import sort.InsertionSort;
 import sort.MergeSort;
 import sort.TwoEndSort;
 
@@ -9,10 +10,10 @@ import java.util.Arrays;
  */
 public class Main {
     public static void main(String[] args) {
-        int[] input = {1, 2, 5, 3, 4, 6, 6, 9};
+        int[] input = {4, 3, 2, 1};
 
         System.out.println("sorting: " + Arrays.toString(input));
-        new BubbleSort().doBubbleSort(input);
+        new InsertionSort().doInsertionSort(input);
         System.out.println("sorted: " + Arrays.toString(input));
 
 
