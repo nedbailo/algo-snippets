@@ -1,3 +1,4 @@
+import sort.BubbleSort;
 import sort.MergeSort;
 import sort.TwoEndSort;
 
@@ -8,10 +9,10 @@ import java.util.Arrays;
  */
 public class Main {
     public static void main(String[] args) {
-        int[] input = {9, 8, 7, 6, 5, 4, 3, 1, 2, 9};
+        int[] input = {1, 2, 5, 3, 4, 6, 6, 9};
 
         System.out.println("sorting: " + Arrays.toString(input));
-        new TwoEndSort().doSort(input);
+        new BubbleSort().doBubbleSort(input);
         System.out.println("sorted: " + Arrays.toString(input));
 
 
